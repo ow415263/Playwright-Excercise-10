@@ -1,14 +1,20 @@
 [
   {
-    "website": "http://www.kewparkmontessori.com",
-    "email": "info@kewparkmontessori.com",
-    "facebook": "",
-    "instagram": "https://www.instagram.com/kewparkmontessori/"
-  },
-  {
     "website": "http://gerrardearlylearningcentre.com",
     "email": "gerrardearlylearningcentre@bellnet.ca",
     "facebook": "",
+    "instagram": ""
+  },
+  {
+    "website": "http://www.kewparkmontessori.com",
+    "email": "info@kewparkmontessori.com",
+    "facebook": "",
+    "instagram": "https://www.instagram.com/"
+  },
+  {
+    "website": "http://www.tanglewoodschool.ca",
+    "email": "info@tanglewoodschool.ca",
+    "facebook": "https://www.facebook.com/tanglewoodschool.ca",
     "instagram": ""
   },
   {
@@ -18,20 +24,8 @@
     "instagram": ""
   },
   {
-    "website": "http://www.tanglewoodschool.ca",
-    "email": "info@tanglewoodschool.ca",
-    "facebook": "https://www.facebook.com/tanglewoodschool.ca",
-    "instagram": ""
-  },
-  {
     "website": "http://www.lamaisondudodo.ca",
     "email": "admin@lamaisondudodo.ca",
-    "facebook": "",
-    "instagram": ""
-  },
-  {
-    "website": "http://wwwymcaofoakville.com",
-    "email": "",
     "facebook": "",
     "instagram": ""
   },
@@ -39,6 +33,12 @@
     "website": "http://www.hgchildcare.com",
     "email": "605a7baede844d278b89dc95ae0a9123@sentry-next.wixpress.com",
     "facebook": "https://www.facebook.com/HeritageGreenChildCare",
+    "instagram": ""
+  },
+  {
+    "website": "http://wwwymcaofoakville.com",
+    "email": "",
+    "facebook": "",
     "instagram": ""
   },
   {
@@ -78,16 +78,16 @@
     "instagram": ""
   },
   {
-    "website": "http://steelkids.ca",
-    "email": "steelkids@bellnet.ca",
-    "facebook": "https://www.facebook.com/steelkids",
-    "instagram": "https://www.instagram.com/steelkidschildcare"
-  },
-  {
     "website": "http://www.jerichoyouthservices.org",
     "email": "info@jerichoys.org",
     "facebook": "https://www.facebook.com/JerichoYouth",
     "instagram": "https://www.instagram.com/jerichoyouthservices"
+  },
+  {
+    "website": "http://steelkids.ca",
+    "email": "steelkids@bellnet.ca",
+    "facebook": "https://www.facebook.com/steelkids",
+    "instagram": "https://www.instagram.com/steelkidschildcare"
   },
   {
     "website": "http://www.overtherainbowcc.ca",
@@ -102,14 +102,14 @@
     "instagram": "https://www.instagram.com/caledon.east.childrens.place"
   },
   {
-    "website": "http://knobhilldaynursery.org",
-    "email": "605a7baede844d278b89dc95ae0a9123@sentry-next.wixpress.com",
+    "website": "http://www.thehaltoncentre.com",
+    "email": "hcccwaitlist@gmail.com",
     "facebook": "",
     "instagram": ""
   },
   {
-    "website": "http://www.thehaltoncentre.com",
-    "email": "hcccwaitlist@gmail.com",
+    "website": "http://knobhilldaynursery.org",
+    "email": "605a7baede844d278b89dc95ae0a9123@sentry-next.wixpress.com",
     "facebook": "",
     "instagram": ""
   },
@@ -133,21 +133,21 @@
   },
   {
     "website": "http://www.associatedhebrewschools.com",
-    "email": "",
-    "facebook": "",
-    "instagram": ""
-  },
-  {
-    "website": "http://niwasa.ca",
-    "email": "office@niwasa.ca",
-    "facebook": "https://www.facebook.com/NiwasaHamilton",
-    "instagram": ""
+    "email": "info@ahschools.com",
+    "facebook": "https://www.facebook.com/associatedhebrewschools",
+    "instagram": "https://www.instagram.com/ahstoronto"
   },
   {
     "website": "http://www.alphasdiscoveryclub.com",
     "email": "",
     "facebook": "https://www.facebook.com/Alphaspreschool",
     "instagram": "https://www.instagram.com/alphaskids"
+  },
+  {
+    "website": "http://niwasa.ca",
+    "email": "office@niwasa.ca",
+    "facebook": "https://www.facebook.com/NiwasaHamilton",
+    "instagram": ""
   },
   {
     "website": "http://www.trms.ca",
@@ -198,15 +198,15 @@
     "instagram": "https://www.instagram.com/waldorf_academy"
   },
   {
-    "website": "http://www.tmcms.ca",
-    "email": "tmcms@hotmail.com",
-    "facebook": "",
-    "instagram": ""
-  },
-  {
     "website": "http://www.littletown.ca",
     "email": "littletownchildcare@outlook.com",
     "facebook": "https://www.facebook.com/littletowntoronto",
+    "instagram": ""
+  },
+  {
+    "website": "http://www.tmcms.ca",
+    "email": "tmcms@hotmail.com",
+    "facebook": "",
     "instagram": ""
   },
   {
@@ -222,14 +222,14 @@
     "instagram": "https://www.instagram.com/wbcorporate"
   },
   {
-    "website": "http://www.macaulayentre.org",
-    "email": "",
+    "website": "https://tapawingodaycare.com/",
+    "email": "tapawingodaycare@rogers.com",
     "facebook": "",
     "instagram": ""
   },
   {
-    "website": "https://tapawingodaycare.com/",
-    "email": "tapawingodaycare@rogers.com",
+    "website": "http://www.macaulayentre.org",
+    "email": "",
     "facebook": "",
     "instagram": ""
   },
@@ -270,22 +270,16 @@
     "instagram": "https://www.instagram.com/tendertreasuresmontessori2009"
   },
   {
-    "website": "http://www.barriebulldog.com",
-    "email": "info@barriebulldog.com",
-    "facebook": "https://www.facebook.com/BARRIEBULLDOG",
-    "instagram": "https://www.instagram.com/barriebulldog"
-  },
-  {
     "website": "http://www.westendmontessori.ca",
     "email": "info@westendmontessori.ca",
     "facebook": "https://www.facebook.com/",
     "instagram": "https://www.instagram.com/Westend_daycare_Montessori_inc"
   },
   {
-    "website": "http://www.impactchildcare.ca",
-    "email": "admin@impactchildcare.ca",
-    "facebook": "",
-    "instagram": "http://www.instagram.com/impact.childcare"
+    "website": "http://www.barriebulldog.com",
+    "email": "info@barriebulldog.com",
+    "facebook": "https://www.facebook.com/BARRIEBULLDOG",
+    "instagram": "https://www.instagram.com/barriebulldog"
   },
   {
     "website": "http://www.buildingblockschool.com",
@@ -294,16 +288,22 @@
     "instagram": ""
   },
   {
-    "website": "http://www.scoredaycamp.com",
-    "email": "info@scoredaycamp.com",
-    "facebook": "https://www.facebook.com/Score-Day-Camp-118176351560339",
-    "instagram": ""
+    "website": "http://www.impactchildcare.ca",
+    "email": "admin@impactchildcare.ca",
+    "facebook": "",
+    "instagram": "http://www.instagram.com/impact.childcare"
   },
   {
     "website": "http://www.laboiteasoleil.ca",
     "email": "fitch@laboiteasoleil.ca",
     "facebook": "https://www.facebook.com/garderielaboiteasoleil",
     "instagram": "https://www.instagram.com/laboiteasoleil.ca"
+  },
+  {
+    "website": "http://www.scoredaycamp.com",
+    "email": "info@scoredaycamp.com",
+    "facebook": "https://www.facebook.com/Score-Day-Camp-118176351560339",
+    "instagram": ""
   },
   {
     "website": "http://www.gledhillchildcare.ca",
@@ -318,16 +318,22 @@
     "instagram": ""
   },
   {
+    "website": "https://brightpathkids.com/brightpath-academy",
+    "email": "info@brightpathkids.com",
+    "facebook": "https://www.facebook.com/brightpathkids",
+    "instagram": "https://www.instagram.com/brightpathkids"
+  },
+  {
     "website": "http://www.ferrislanedaycare.ca",
     "email": "info@ferrislanedaycare.ca",
     "facebook": "",
     "instagram": ""
   },
   {
-    "website": "https://brightpathkids.com/brightpath-academy",
-    "email": "info@brightpathkids.com",
-    "facebook": "https://www.facebook.com/brightpathkids",
-    "instagram": "https://www.instagram.com/brightpathkids"
+    "website": "http://www.macaulaycentre.org",
+    "email": "",
+    "facebook": "",
+    "instagram": ""
   },
   {
     "website": "http://www.fcchildcare.ca",
@@ -348,28 +354,22 @@
     "instagram": ""
   },
   {
-    "website": "http://www.macaulaycentre.org",
-    "email": "",
-    "facebook": "",
-    "instagram": ""
-  },
-  {
     "website": "http://www.beyondourdreams.ca",
-    "email": "",
-    "facebook": "",
-    "instagram": ""
-  },
-  {
-    "website": "http://www.le-club.ca",
-    "email": "",
-    "facebook": "",
-    "instagram": ""
+    "email": "christine@beyondourdreams.ca",
+    "facebook": "https://www.facebook.com/beyondourdreamspreschool/reviews",
+    "instagram": "https://www.instagram.com/beyondourdreamspreschool"
   },
   {
     "website": "http://www.firstroots.ca",
     "email": "info@firstroots.ca",
     "facebook": "https://www.facebook.com/firstrootsacademy",
     "instagram": "https://www.instagram.com/firstroots_academy"
+  },
+  {
+    "website": "http://www.le-club.ca",
+    "email": "",
+    "facebook": "",
+    "instagram": ""
   },
   {
     "website": "http://kindercollege.ca",
@@ -384,16 +384,16 @@
     "instagram": ""
   },
   {
-    "website": "https://tinytreasure.ca/",
-    "email": "toni@tinytreasure.ca",
-    "facebook": "https://www.facebook.com/",
-    "instagram": "https://www.instagram.com/"
-  },
-  {
     "website": "http://www.striveniagara.ca",
     "email": "admin@striveniagara.ca",
     "facebook": "http://www.facebook.com/striveniagara",
     "instagram": "https://www.instagram.com/striveniagara"
+  },
+  {
+    "website": "https://tinytreasure.ca/",
+    "email": "toni@tinytreasure.ca",
+    "facebook": "https://www.facebook.com/",
+    "instagram": "https://www.instagram.com/"
   },
   {
     "website": "http://www.fairportmontessori.com",
@@ -426,20 +426,14 @@
     "instagram": ""
   },
   {
-    "website": "http://www.angelgatedaycare.com",
-    "email": "angelgate@rogers.com",
-    "facebook": "",
-    "instagram": ""
-  },
-  {
     "website": "http://www.kmschool.org",
     "email": "info@kmschool.org",
     "facebook": "https://www.facebook.com/theKMSchool",
     "instagram": ""
   },
   {
-    "website": "http://www.nothviewheightselc.ca",
-    "email": "",
+    "website": "http://www.angelgatedaycare.com",
+    "email": "angelgate@rogers.com",
     "facebook": "",
     "instagram": ""
   },
@@ -450,7 +444,7 @@
     "instagram": ""
   },
   {
-    "website": "http://www.springdalelearningcentre.ca",
+    "website": "http://www.nothviewheightselc.ca",
     "email": "",
     "facebook": "",
     "instagram": ""
@@ -460,6 +454,12 @@
     "email": "info@umbrellafamily.com",
     "facebook": "https://www.facebook.com/umbrellafamilyandchild",
     "instagram": "https://instagram.com/umbrellafamily"
+  },
+  {
+    "website": "http://www.springdalelearningcentre.ca",
+    "email": "",
+    "facebook": "",
+    "instagram": ""
   },
   {
     "website": "http://umbrellafamily.com",
@@ -492,6 +492,12 @@
     "instagram": ""
   },
   {
+    "website": "http://www.nelephant.ca",
+    "email": "info@nelephant.ca",
+    "facebook": "https://www.facebook.com/nelephantmontessori",
+    "instagram": "https://www.instagram.com/nelephantmontessori"
+  },
+  {
     "website": "http://yourpreschools.info",
     "email": "yourpreschools@gmail.com",
     "facebook": "https://www.facebook.com/profile.php",
@@ -502,12 +508,6 @@
     "email": "info@wesleyca.com",
     "facebook": "http://www.facebook.com/wca.elc",
     "instagram": "https://www.instagram.com/wca_elc"
-  },
-  {
-    "website": "http://www.nelephant.ca",
-    "email": "info@nelephant.ca",
-    "facebook": "https://www.facebook.com/nelephantmontessori",
-    "instagram": "https://www.instagram.com/nelephantmontessori"
   },
   {
     "website": "https://mountpleasantmontessori.com/",
@@ -564,6 +564,12 @@
     "instagram": ""
   },
   {
+    "website": "http://www.plas.com",
+    "email": "",
+    "facebook": "https://www.facebook.com/plasticsdaily",
+    "instagram": ""
+  },
+  {
     "website": "https://goodshepherddaycare.ca",
     "email": "gsdctmccc@yahoo.ca",
     "facebook": "https://www.facebook.com/1055709914596877",
@@ -576,22 +582,16 @@
     "instagram": ""
   },
   {
-    "website": "http://www.plas.com",
-    "email": "",
-    "facebook": "https://www.facebook.com/plasticsdaily",
-    "instagram": ""
+    "website": "http://www.kidsconnectionce.com",
+    "email": "contact@kidsconnectionce.com",
+    "facebook": "https://www.facebook.com/kidsconnectionce",
+    "instagram": "https://www.instagram.com/kidsconnectionce"
   },
   {
     "website": "http://www.mcrc.ca",
     "email": "",
     "facebook": "",
     "instagram": ""
-  },
-  {
-    "website": "http://www.kidsconnectionce.com",
-    "email": "contact@kidsconnectionce.com",
-    "facebook": "https://www.facebook.com/kidsconnectionce",
-    "instagram": "https://www.instagram.com/kidsconnectionce"
   },
   {
     "website": "http://ldva.on.ca",

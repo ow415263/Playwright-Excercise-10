@@ -14,10 +14,9 @@ type RowOut = {
 };
 
 // --------- Config (tweak as needed) ----------
-const DEFAULT_WORKERS = Math.max(2, Math.min(8, os.cpus().length)); 
 const NAV_TIMEOUT_MS = 20000; // navigation timeout
 const PER_URL_HARD_TIMEOUT_MS = 30000; // total time budget per URL
-const POLITE_MIN_MS = 200; // delay between URLs per worker
+const DELAY_MS = 200; // minimum delay between requests (ms)
 const POLITE_JITTER_MS = 400;
 
 const EMAIL_REGEX = /[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}/g;
@@ -90,26 +89,12 @@ function pickBestSocial(candidates: string[], hostContains: string): string {
   best.search = '';
   best.hash = '';
   if (best.pathname.endsWith('/') && best.pathname !== '/') {
-    best.pathname = best.pathname.replace(/\/+$/,'');
+    best.pathname = best.pathname.replace(/\/+$/, '');
   }
   return best.toString();
 }
 
-async function autoScroll(page: Page) {
-  await page.evaluate(async () => {
-    await new Promise<void>((resolve) => {
-      let y = 0;
-      const step = 400;
-      const timer = setInterval(() => {
-        window.scrollBy(0, step);
-        y += step;
-        if (y > document.body.scrollHeight * 1.2) {
-          clearInterval(timer); resolve();
-        }
-      }, 100);
-    });
-  });
-}
+// autoScroll removed — pages are assumed to load fully without programmatic scrolling
 
 function openCsv(outPath: string) {
   if (!fs.existsSync(path.dirname(outPath))) {
@@ -118,7 +103,7 @@ function openCsv(outPath: string) {
   const firstWrite = !fs.existsSync(outPath);
   const ws = fs.createWriteStream(outPath, { flags: 'a' });
   if (firstWrite) {
-  ws.write(`website,email,facebook,instagram\n`);
+    ws.write(`website,email,facebook,instagram\n`);
   }
   return ws;
 }
@@ -139,7 +124,7 @@ function writeCsvRow(ws: fs.WriteStream, row: RowOut) {
 // JSON output is written at the end via fsp.writeFile
 
 // --------- Extraction core ----------
-async function extractFromCurrentPage(page: Page): Promise<{emails: string[]; fb: string[]; ig: string[]; contactLinks: string[]}> {
+async function extractFromCurrentPage(page: Page): Promise<{ emails: string[]; fb: string[]; ig: string[]; contactLinks: string[] }> {
   const anchors = await page.$$eval('a[href]', (els) =>
     (els as HTMLAnchorElement[]).map((a: HTMLAnchorElement) => ({
       href: (a.getAttribute('href') || '').trim(),
@@ -185,8 +170,7 @@ async function tryContactPages(page: Page, links: string[]) {
   for (const link of links.slice(0, 2)) {
     try {
       await page.goto(link, { waitUntil: 'domcontentloaded', timeout: NAV_TIMEOUT_MS });
-      try { await page.waitForLoadState('networkidle', { timeout: 1500 }); } catch {}
-      await autoScroll(page);
+      try { await page.waitForLoadState('networkidle', { timeout: 1500 }); } catch { }
       const html = await page.content();
       for (const m of html.match(EMAIL_REGEX) || []) found.add(normalizeEmail(m));
       const anchors = await page.$$eval("a[href^='mailto:']", (els: Element[]) => (els as HTMLAnchorElement[]).map((a: HTMLAnchorElement) => a.getAttribute('href') || ''));
@@ -212,8 +196,7 @@ async function processOne(page: Page, rawUrl: string): Promise<RowOut> {
   const job = (async () => {
     try {
       await page.goto(website, { waitUntil: 'domcontentloaded', timeout: NAV_TIMEOUT_MS });
-      try { await page.waitForLoadState('networkidle', { timeout: 1500 }); } catch {}
-      await autoScroll(page);
+      try { await page.waitForLoadState('networkidle', { timeout: 1500 }); } catch { }
 
       const first = await extractFromCurrentPage(page);
       emails = first.emails;
@@ -225,7 +208,6 @@ async function processOne(page: Page, rawUrl: string): Promise<RowOut> {
         if (extra.length) emails = uniq([...emails, ...extra]);
       }
     } catch (e: any) {
-      // navigation failed; continue to build best-effort RowOut
     }
 
     const facebook = pickBestSocial(fbs, FB_HOST);
@@ -249,7 +231,7 @@ async function processOne(page: Page, rawUrl: string): Promise<RowOut> {
   });
 }
 
-// --------- Worker pool ----------
+// (sequential processing)
 async function makeContext(browser: Browser): Promise<BrowserContext> {
   const ctx = await browser.newContext({
     userAgent: randomUA(),
@@ -262,26 +244,6 @@ async function makeContext(browser: Browser): Promise<BrowserContext> {
     return route.continue();
   });
   return ctx;
-}
-
-async function worker(id: number, browser: Browser, urls: string[], getNext: () => number|undefined, csv: fs.WriteStream, collect: (r: RowOut) => void) {
-  const ctx = await makeContext(browser);
-  const page = await ctx.newPage();
-
-  while (true) {
-    const idx = getNext();
-    if (idx === undefined) break;
-    const url = urls[idx];
-
-    await sleep(POLITE_MIN_MS + Math.floor(Math.random() * POLITE_JITTER_MS));
-
-  const out = await processOne(page, url);
-  writeCsvRow(csv, out);
-  collect(out);
-    process.stdout.write(`\rProcessed: ${idx + 1}/${urls.length}`);
-  }
-
-  await ctx.close();
 }
 
 // --------- Main ----------
@@ -304,14 +266,21 @@ export async function runExtractor(browserArg?: Browser) {
 
   const browser = browserArg ?? await chromium.launch({ headless: true });
 
-  let next = 0;
-  const getNext = () => (next < urls.length ? next++ : undefined);
+  console.log(`Processing ${urls.length} URLs sequentially...`);
 
-  const WORKERS = Number(process.env.WORKERS || DEFAULT_WORKERS);
-  console.log(`Starting ${WORKERS} workers for ${urls.length} URLs...`);
+  const ctx = await makeContext(browser);
+  const page = await ctx.newPage();
 
-  await Promise.all(Array.from({ length: WORKERS }, (_, i) => worker(i, browser, urls, getNext, csv, collect)));
+  for (let idx = 0; idx < urls.length; idx++) {
+    const url = urls[idx];
+  await sleep(DELAY_MS + Math.floor(Math.random() * POLITE_JITTER_MS));
+    const out = await processOne(page, url);
+    writeCsvRow(csv, out);
+    collect(out);
+    process.stdout.write(`\rProcessed: ${idx + 1}/${urls.length}`);
+  }
 
+  await ctx.close();
   await browser.close();
 
   csv.end();
@@ -326,7 +295,7 @@ export async function runExtractor(browserArg?: Browser) {
 }
 
 // Playwright UI test wrapper
-test('contact extractor runs and produces outputs', async ({}, testInfo) => {
+test('contact extractor runs and produces outputs', async ({ }, testInfo) => {
   test.setTimeout(30 * 60 * 1000); // 30 minutes
   await runExtractor();
 });

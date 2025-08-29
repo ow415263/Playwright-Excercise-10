@@ -1,17 +1,17 @@
 {
   "type": "module",
   "scripts": {
-  "extract": "WORKERS=1 npx tsx tests/contact.extractor.spec.ts data/sites.json output/contacts.csv"
+    "extract": "WORKERS=1 npx tsx tests/contact.extractor.spec.ts data/sites.json output/contacts.csv"
   },
   "dependencies": {
     "p-limit": "^7.1.1",
     "playwright": "^1.55.0"
   },
   "devDependencies": {
-  "tsx": "^4.20.5",
-  "typescript": "^5.9.2",
-  "@types/node": "^20.11.0",
-  "@playwright/test": "^1.55.0"
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^20.11.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
   },
   "name": "playwright-excercise-10",
   "version": "1.0.0",
