@@ -12,6 +12,8 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  // Increase test timeout to allow long-running extraction over many sites
+  timeout: 30 * 60 * 1000, // 30 minutes per test
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -25,12 +27,16 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+  // Give navigations more time on slow sites and disable short action timeouts
+  navigationTimeout: 120000, // 2 minutes
+  actionTimeout: 0,
+  // allow visiting sites with cert issues and bypass CSP when scraping
+  ignoreHTTPSErrors: true,
+  bypassCSP: true,
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-    video: 'on'
   },
 
   /* Configure projects for major browsers */

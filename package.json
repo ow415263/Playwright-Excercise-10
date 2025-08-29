@@ -1,14 +1,34 @@
 {
-  "name": "playwrite-excercise-10",
+  "type": "module",
+  "scripts": {
+  "extract": "WORKERS=1 npx tsx tests/contact.extractor.spec.ts data/sites.json output/contacts.csv"
+  },
+  "dependencies": {
+    "p-limit": "^7.1.1",
+    "playwright": "^1.55.0"
+  },
+  "devDependencies": {
+  "tsx": "^4.20.5",
+  "typescript": "^5.9.2",
+  "@types/node": "^20.11.0",
+  "@playwright/test": "^1.55.0"
+  },
+  "name": "playwright-excercise-10",
   "version": "1.0.0",
-  "description": "Prep for Lattitude UX testing using Playwrite's browser automation testing.",
+  "description": "Prep for Lattitude UX testing using Playwright's browser automation testing.",
   "main": "index.js",
-  "scripts": {},
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ow415263/Playwright-Excercise-10.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@playwright/test": "^1.55.0",
-    "@types/node": "^24.3.0"
-  }
+  "bugs": {
+    "url": "https://github.com/ow415263/Playwright-Excercise-10/issues"
+  },
+  "homepage": "https://github.com/ow415263/Playwright-Excercise-10#readme"
 }
