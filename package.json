@@ -4,11 +4,13 @@
     "extract": "WORKERS=1 npx tsx tests/contact.extractor.spec.ts data/sites.json output/contacts.csv"
   },
   "dependencies": {
+    "archiver": "^5.3.2",
     "p-limit": "^7.1.1",
     "playwright": "^1.55.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
+    "@types/archiver": "^6.0.3",
     "@types/node": "^20.11.0",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
