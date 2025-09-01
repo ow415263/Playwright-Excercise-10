@@ -5,7 +5,6 @@ import path from 'path';
 import archiver from 'archiver';
 import pLimit from 'p-limit';
 
-// --------- Minimal PDF extraction helpers (lean) ----------
 async function fileExists(fp: string) {
   try {
     await fsp.access(fp, fs.constants.F_OK);
@@ -94,13 +93,11 @@ function getZipPath(destDir: string) {
   return path.resolve(path.dirname(destDir), path.basename(destDir) + '.zip');
 }
 
-// Central per-item processor. If a Playwright `page` is provided, it will
-// attempt the page-based fallback when a simple fetch-based download fails.
 async function processItem(item: Record<string, any>, destDir: string, page?: any) {
   const { code, url, outPath } = getOutInfo(item, destDir);
   if (!code || !url) return { ok: false, reason: 'missing product_code or url', item };
 
-  // Try fetch-based download first (handles existence checks)
+  // Try fetch-based download first 
   const fetchRes: any = await downloadIfPdf(item, destDir).catch((e) => ({ ok: false, reason: String(e) }));
   if (fetchRes && fetchRes.ok && fetchRes.path) return fetchRes;
 
@@ -187,7 +184,7 @@ export async function runPdfExtraction(list: Array<{ product_code?: string; url?
   return { downloaded, skipped, failed, zip: zipRes.ok ? zipPath : undefined, zipError: zipRes.ok ? undefined : zipRes };
 }
 
-// If executed directly (node/tsx), run the extractor using the provided JSON path or data/pdfs.json
+
 const invokedDirectly = typeof process.argv[1] === 'string' && (process.argv[1].endsWith('tests/pdf.extractor.spec.ts') || process.argv[1].endsWith('pdf.extractor.spec.ts'));
 if (invokedDirectly) {
   (async () => {
@@ -196,15 +193,6 @@ if (invokedDirectly) {
       const raw = await fsp.readFile(inputArg, 'utf8');
       const list = JSON.parse(raw);
       const res = await runPdfExtraction(list);
-      // write full result JSON for debugging and CI
-      try {
-        const outJson = path.resolve(process.cwd(), 'output', 'extraction-result.json');
-        await fsp.mkdir(path.dirname(outJson), { recursive: true });
-        await fsp.writeFile(outJson, JSON.stringify(res, null, 2), 'utf8');
-        console.log('WROTE', outJson);
-      } catch (werr: any) {
-        console.error('Could not write extraction-result.json:', String(werr));
-      }
       console.log('PDF extraction finished:', { downloaded: res.downloaded.length, skipped: res.skipped.length, failed: res.failed.length, zip: res.zip });
     } catch (e: any) {
       console.error('Failed to run PDF extraction:', e.message || e);
@@ -213,9 +201,8 @@ if (invokedDirectly) {
   })();
 }
 
-// Playwright test wrapper (so you can run `npx playwright test`)
-if (process.env.SKIP_REGISTER_TESTS !== '1') {
-  test('pdf extractor - downloads PDFs and zips them', async ({ page }) => {
+// Playwright test wrapper 
+test('pdf extractor - downloads PDFs and zips them', async ({ page }) => {
   test.setTimeout(30 * 60 * 1000);
   const input = path.resolve(process.cwd(), 'data', 'pdfs.json');
   let list: any[] = [];
@@ -263,10 +250,9 @@ if (process.env.SKIP_REGISTER_TESTS !== '1') {
     }
   }
 
-  // try to zip downloads
+  // zip downloads
   const zipPath = path.resolve(path.dirname(destDir), path.basename(destDir) + '.zip');
   const zipRes = await zipFiles(downloaded, zipPath);
 
   console.log('PDF extraction summary:', { downloaded: downloaded.length, skipped: skipped.length, failed: failed.length, zip: zipRes.ok ? zipPath : undefined });
-  });
-}
+});
